@@ -29,11 +29,13 @@ public class PageProduct extends BasePage {
     public void switchCurrencyToEuro() {
         switchCurrency();
         click(CURRENCY_EURO);
+        waitSwitch(CURRENCY, "€");
     }
 
     public void switchCurrencyToPound() {
         switchCurrency();
         click(CURRENCY_POUND);
+        waitSwitch(CURRENCY, "£");
     }
 
     public boolean checkPrice(String value) {

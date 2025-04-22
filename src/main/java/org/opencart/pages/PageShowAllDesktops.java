@@ -34,8 +34,7 @@ public class PageShowAllDesktops extends BasePage {
     }
 
     public boolean checkCountProducts(String value) {
-        String currentCountProducts = Integer.toString(findElements(PRODUCTS).size());
-        return currentCountProducts.equals(value);
+        return checkCount(PRODUCTS, value);
     }
 
     public void switchShowDD(String value) {
