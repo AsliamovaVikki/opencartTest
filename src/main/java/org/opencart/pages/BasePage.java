@@ -57,10 +57,15 @@ public abstract class BasePage {
         dropdown.selectByVisibleText(visibleText);
     }
 
-    public void switchSelect(By locator, int index) {
-        log.info("Selecting index {} from dropdown: {}", index, locator);
+    public void switchSelect(By locator, String value) {
+        log.info("Selecting value {} from dropdown: {}", value, locator);
         Select dropdown = new Select(wait.until(ExpectedConditions.presenceOfElementLocated(locator)));
-        dropdown.selectByIndex(index);
+        dropdown.selectByVisibleText(value);
+    }
+
+    public boolean dropdownSelectCheck(By locator, String value) {
+        String currentOption = getFirstSelectedOption(locator);
+        return currentOption.equals(value);
     }
 
     public String getFirstSelectedOption(By locator) {
