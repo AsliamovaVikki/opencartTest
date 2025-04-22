@@ -26,10 +26,7 @@ public abstract class BasePage {
         this.actions = new Actions(driver);
     }
 
-    public void openPage(String url) {
-        log.info("Opening page: {}", url);
-        driver.get(url);
-    }
+    public abstract void openPage();
 
     public void click(By locator) {
         try {

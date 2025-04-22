@@ -1,19 +1,18 @@
 package org.opencart.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+
+import static org.opencart.locators.BrandsLocators.BRANDS_ELEMENTS;
+import static org.opencart.locators.BrandsLocators.BRANDS_LINK;
 
 /**
  * Brands Page Page.
  * Contains methods to open a page and obtain a brand list.
  */
 public class PageBrands extends BasePage {
-
-    private final By footerBrandsLink = By.xpath("//footer//a[text()='Brands']");
-    private final By brandElements = By.cssSelector(".col-sm-3 a");
 
     public PageBrands(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -22,8 +21,8 @@ public class PageBrands extends BasePage {
     /**
      * Click on the link in the "Brands" foot and waiting for a transition to a brand page.
      */
-    public void openBrandsPage() {
-        clickAndWaitForUrl(footerBrandsLink, "route=product/manufacturer");
+    public void openPage() {
+        clickAndWaitForUrl(BRANDS_LINK, "route=product/manufacturer");
     }
 
     /**
@@ -32,6 +31,6 @@ public class PageBrands extends BasePage {
      * @return List of brand names
      */
     public List<String> getBrandNames() {
-        return getElementsText(brandElements);
+        return getElementsText(BRANDS_ELEMENTS);
     }
 }
