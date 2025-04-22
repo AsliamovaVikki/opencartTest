@@ -16,7 +16,6 @@ public class TestShowAll extends BaseTest<PageShowAllDesktops> {
         page.openPage();
 
         assertTrue(page.checkInShow(value), "Value is invalid: " + value);
-
     }
 
     @Test
@@ -44,8 +43,6 @@ public class TestShowAll extends BaseTest<PageShowAllDesktops> {
 
         assertTrue(page.checkInShow(value), "Value is invalid: " + value);
         assertTrue(page.checkCountProducts(currentProducts), "Value is invalid: " + value);
-
-
     }
 
     @Test
@@ -55,8 +52,22 @@ public class TestShowAll extends BaseTest<PageShowAllDesktops> {
         assertTrue(page.checkPaginationText(value), "Value is invalid: " + value);
         page.scrollPage();
         assertTrue(page.checkPaginationLocate(), "Pagination is not on down page");
+    }
 
+    @Test
+    public void testSortByAlphabetOrder() {
+        String value = "Name (A - Z)";
+        page.openPage();
+        page.switchSortByDD(value);
+        assertTrue(page.checkAlphabetOrder(), "Products is not sorted: " + value);
+    }
 
+    @Test
+    public void testSortByPriceOrder() {
+        String value = "Price (Low > High)";
+        page.openPage();
+        page.switchSortByDD(value);
+        assertTrue(page.checkPriceOrder(), "Products is not sorted: " + value);
     }
 
 

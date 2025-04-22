@@ -4,7 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.opencart.locators.ShowAllDesktopsLocators.*;
+import static org.opencart.utils.Utils.isSortedAscending;
 
 
 public class PageShowAllDesktops extends BasePage {
@@ -58,5 +64,26 @@ public class PageShowAllDesktops extends BasePage {
         WebElement pagination = getPagination();
         return pagination.isDisplayed();
     }
+
+    public boolean checkAlphabetOrder() {
+        List<WebElement> products = findElements(PRODUCTS_NAMES);
+        List<String> productNames = products.stream()
+                .map(e -> e.getText().trim())
+                .collect(Collectors.toList());
+        return isSortedAscending(productNames, String.CASE_INSENSITIVE_ORDER);
+    }
+
+    public boolean checkPriceOrder() {
+        List<WebElement> products = findElements(PRODUCTS_PRICE);
+        List<Double> productsPrice = new ArrayList<>();
+
+        for (WebElement el : products) {
+            String priceText = el.getText().replace("$", "").trim();
+            double price = Double.parseDouble(priceText);
+            productsPrice.add(price);
+        }
+        return isSortedAscending(productsPrice, Comparator.naturalOrder());
+    }
+
 
 }

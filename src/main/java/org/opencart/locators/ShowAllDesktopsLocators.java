@@ -8,6 +8,8 @@ public class ShowAllDesktopsLocators {
     public static final By OPTION_SHOW = By.id("input-limit");
     public static final By OPTION_SORT = By.id("input-sort");
     public static final By PRODUCTS = By.className("product-layout");
+    public static final By PRODUCTS_NAMES = By.tagName("h4");
+    public static final By PRODUCTS_PRICE = By.className("price-new");
     public static final By PAGINATION = By.cssSelector("div.col-sm-6.text-right");
 
 
