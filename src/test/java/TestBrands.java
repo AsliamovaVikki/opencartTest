@@ -15,7 +15,7 @@ public class TestBrands extends BaseTest<PageBrands> {
     public void testBrandsAreDisplayed() {
         List<String> expectedBrands = List.of("Apple", "Canon", "Hewlett-Packard", "HTC", "Palm", "Sony");
 
-        page.openBrandsPage();
+        page.openPage();
 
         List<String> actualBrands = page.getBrandNames();
 
