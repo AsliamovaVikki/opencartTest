@@ -57,6 +57,10 @@ public abstract class BasePage {
         dropdown.selectByVisibleText(visibleText);
     }
 
+    public void waitSwitch(By locator, String value) {
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, value));
+    }
+
     public void switchSelect(By locator, String value) {
         log.info("Selecting value {} from dropdown: {}", value, locator);
         Select dropdown = new Select(wait.until(ExpectedConditions.presenceOfElementLocated(locator)));
