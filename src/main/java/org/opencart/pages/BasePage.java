@@ -61,6 +61,11 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, value));
     }
 
+    public boolean checkCount(By locator, String value) {
+        String currentCountProducts = Integer.toString(findElements(locator).size());
+        return currentCountProducts.equals(value);
+    }
+
     public void switchSelect(By locator, String value) {
         log.info("Selecting value {} from dropdown: {}", value, locator);
         Select dropdown = new Select(wait.until(ExpectedConditions.presenceOfElementLocated(locator)));
